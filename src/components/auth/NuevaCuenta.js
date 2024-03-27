@@ -26,8 +26,8 @@ const NuevaCuenta = () => {
 
     // State para iniciar sesion
     const [usuario, setUsuario] = useState({
-        nombre: '',
-        apellidos: '',
+        name: '',
+        lastname: '',
         email: '',
         username: '',
         password: '',
@@ -35,7 +35,7 @@ const NuevaCuenta = () => {
     });
 
     //extraer
-    const { nombre, apellidos, email, username, password, confirmar } = usuario;
+    const { name, lastname, email, username, password, confirmar } = usuario;
 
     const onChange = e => {
         setUsuario({
@@ -46,7 +46,7 @@ const NuevaCuenta = () => {
     const onSubmit = e => {
         e.preventDefault();
         //validar campos
-        if(nombre.trim() === '' || email.trim() === '' || username.trim() === '' || password.trim() === '' || confirmar.trim() === '') {
+        if(name.trim() === '' || email.trim() === '' || username.trim() === '' || password.trim() === '' || confirmar.trim() === '') {
             mostrarAlerta('Todos los campos son obligatorios', 'alerta-error')
             // console.warn(alerta);
             return;
@@ -63,7 +63,7 @@ const NuevaCuenta = () => {
         }
         //action
         registrarUsuario({
-            nombre, apellidos, email, username, password
+            name, lastname, email, username, password
         })
     }
     return ( 
@@ -73,24 +73,24 @@ const NuevaCuenta = () => {
                 <h1>Crear cuenta</h1>
                 <form onSubmit={onSubmit} >
                     <div className="campo-form">
-                        <label htmlFor="nombre">Nombre</label>
+                        <label htmlFor="name">Nombre</label>
                         <input
                             type="text"
-                            id="nombre"
-                            name="nombre"
+                            id="name"
+                            name="name"
                             placeholder="Ingresar nombre"
-                            value={nombre}
+                            value={name}
                             onChange={onChange}
                         />
                     </div>
                     <div className="campo-form">
-                        <label htmlFor="apellidos">Apellidos</label>
+                        <label htmlFor="lastname">Apellidos</label>
                         <input
                             type="text"
-                            id="apellidos"
-                            name="apellidos"
-                            placeholder="Ingresar nombre"
-                            value={apellidos}
+                            id="lastname"
+                            name="lastname"
+                            placeholder="Ingresar apellidos"
+                            value={lastname}
                             onChange={onChange}
                         />
                     </div>

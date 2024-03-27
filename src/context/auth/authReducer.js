@@ -36,6 +36,7 @@ export default (state, action) => {
                 mensaje: action.payload?action.payload:null
             }
         case OBTENER_USUARIO:
+            console.log(action.payload, action.payload.user)
             localStorage.setItem('user',JSON.stringify(action.payload.user));
             return {
                 ...state,

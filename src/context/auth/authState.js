@@ -30,7 +30,7 @@ const AuthState = props => {
     const registrarUsuario = async datos => {
         // console.log(datos);
         try {
-            const respuesta = await clienteAxios.post('/api/createaccounnt/',datos);
+            const respuesta = await clienteAxios.post('/api/users/createaccount/',datos);
             // console.log(respuesta);
 
             dispatch({
@@ -67,7 +67,7 @@ const AuthState = props => {
         const token = localStorage.getItem('token');
         const user = localStorage.getItem('user');
 
-        const fake_reponse = {
+        const fake_response = {
             token: token,
             data: {user:user?JSON.parse(user):null}
         }
@@ -77,10 +77,10 @@ const AuthState = props => {
         if(user && token) {
             dispatch({
                 type: REGISTRO_EXITOSO,
-                payload: fake_reponse
+                payload: fake_response
             });
 
-            get_user(fake_reponse)
+            get_user(fake_response)
         }
     }
     // Retorna el usuario autenticado
@@ -93,7 +93,7 @@ const AuthState = props => {
         }
 
         try {
-            const respuesta = await clienteAxios.get('/api/users/get');
+            const respuesta = await clienteAxios.get('/api/users/users/get');
             get_user(respuesta)
         }
         catch (error) {
@@ -112,7 +112,7 @@ const AuthState = props => {
     // Cuando el usuario inicia sesion
     const iniciarSesion = async datos => {
         try {
-            const respuesta = await clienteAxios.post('/api/login',datos);
+            const respuesta = await clienteAxios.post('/api/users/login',datos);
             
             dispatch({
                 type: LOGIN_EXITOSO,
